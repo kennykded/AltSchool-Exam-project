@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<div class="container my-5">
+    <p class="mt-3">Saved under Drafts on submit</p>
+    <form action="/posts/new-story" method="post" class="w-100 mt-5 mx-auto">
+        <div class="mb-3 mt-3">
+            <input type="text" class="form-control border-0 fs-2" id="firstName" placeholder="Title" name="title">
+        </div>
+        
+        <div class="mb-3 mt-3">
+            <textarea id="the_textarea" placeholder="Description" name="description" onchange="javascript:textarea_height(the_textarea, 15);" width="100%" height="auto" class="textarea form-control border-0 fs-4"></textarea>
+        </div>
+    
+        <div class="mb-3 mt-3">
+            <textarea id="the_textarea" placeholder="Tell your story..." name="body" rows="15" onchange="javascript:textarea_height(the_textarea, 15);"  height="auto" class="textarea form-control border-0 w-100 p-3 h-5"></textarea>
+ 
+        </div>
+    
+        <div class="mb-3">
+            <input type="text" class="form-control bord" id="password" placeholder="Tags. Separate with commas" name="tags">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<%-include('partials/footer')%>

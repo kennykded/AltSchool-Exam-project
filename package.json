@@ -1,0 +1,41 @@
+{
+  "name": "altschool-exam-project",
+  "version": "1.0.0",
+  "description": "\"server-rendered blog web app\"",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node/src/app.js",
+    "dev": "nodemon src/app.js",
+    "tailwind:css": "postcss src/public/input.css -o src/public/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennykded/AltSchool-Exam-project.git"
+  },
+  "author": "KDED",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kennykded/AltSchool-Exam-project/issues"
+  },
+  "homepage": "https://github.com/kennykded/AltSchool-Exam-project#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "ejs-lint": "^2.0.0",
+    "express": "^4.18.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.3",
+    "nodemon": "^3.0.1",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.5"
+  }
+}

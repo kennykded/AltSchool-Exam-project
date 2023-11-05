@@ -1,0 +1,51 @@
+<%-include('partials/header')%>
+<% if (error) {%>
+    <div class="alert alert-info alert-dismissible fade show position-absolute w-100" role="alert">
+        <symbol id="check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <%=error%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<%} %>
+    <div class="mb-5 invisible">ah</div>
+
+    
+<main class="">
+    <div class="container w-75">
+        <%if (blogs) {%>
+            <% blogs.forEach(function(blog){%>
+                <div class="blogSet border-bottom mb-5 pb-5">
+                    <a href="/posts/<%=blog.user_id%>/<%=blog._id%>">
+                        <div class="top d-flex ay-center">
+                            <img class="me-2" width="23" height="23" src="https://img.icons8.com/ios/50/guest-male.png" alt="guest-male"/>
+                            <p class="fs-5 me-2 fw-medium"><%= blog.author%></p> <span class="me-2">-</span>
+                            <span class="fw-light"><%= blog.published_time %></span>
+                        </div>
+                        <h4 class="fw-bold"><%= blog.title %></h4>
+                        <p><%= blog.description %></p>
+                        <div class="bottom d-flex align-items-middle mt-3 fs-6 fw-lighter">
+                            <div class="me-3">
+                                <% blog.tags.forEach(function(tag){%>
+                                    <span class="me-3 fw-lighter bg-dark-subtle rounded-pill py-1 px-3"><%= tag %></span>
+                                <%}) %>
+                            </div>
+    
+                            <p class="me-3 fw-lighter ay-end"><%= blog.reading_time %> read</p>
+
+                            <div class="d-flex">
+                                <img class="align-middle ms-3 me-1 mt-1" width="20" height="20"  src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/>
+                                <p class="fw-lighter"><%= blog.read_count %></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <%}) %>
+        <%} else {%>
+            <h4 class="text-center"><%= message%> <br>New Site</h4>
+        <%}%>
+    </div>
+</main>
+
+
+<%-include('partials/footer')%>

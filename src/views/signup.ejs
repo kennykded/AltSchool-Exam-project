@@ -1,0 +1,41 @@
+<%-include('partials/header')-%>
+
+<% if (message) {%>
+    
+    <div class="alert alert-dark alert-dismissible fade show position-absolute w-100" role="alert">
+        <%=message%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+<div class="container mt-5">
+    <form class="w-75 mt-5 mx-auto shadow mb-4 bg-white rounded p-5" action="/user/signup" method="post">
+
+        <h2 class="mb-4">Signup</h2>
+
+        <div class="mb-3 mt-3">
+          <label for="username" class="form-label">Firt Name:</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Enter first name" name="first_name">
+        </div>
+        
+        <div class="mb-3 mt-3">
+          <label for="username" class="form-label">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Enter last name" name="last_name">
+        </div>
+    
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
+        </div>
+    
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+        </div>
+    
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+
+<%-include('partials/footer')-%>

@@ -1,0 +1,70 @@
+i<%-include('partials/header')%>
+
+<div class="mb-5 invisible">ah</div>
+
+<div class="container">
+    <div class="d-flex justify-content-between w-100 mb-5">
+        <h2 class="fw-bold"><%= user.firstName[0].toUpperCase()%><%=user.firstName.slice(1) %> <%= user.lastName[0].toUpperCase()%><%=user.lastName.slice(1)%></h2>
+        <button type="submit" class="btn btn-success rounded "><a class="text-white" href="/new-story">write a story</a></button>
+    </div>
+    
+    <p class="mb-5">Click on draft posts to published</p>
+    
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#published">Published (<%=pubBlogs ? pubBlogs.length : 0%>)</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#drafts">Drafts (<%=draftBlogs ? draftBlogs.length : 0%>)</a>
+        </li>
+    </ul>
+    
+    <!-- Tab panes -->
+    <div class="tab-content mt-5">
+        <div class="tab-pane container active" id="published">
+            <%if (pubBlogs) {%>
+                <% pubBlogs.forEach(function(blog){%>
+                    <div class="border-bottom mb-5 pb-2 lh-0">
+                        <a href="/dashboard/@<%=user.email.split('@')[0]%>/<%=blog._id%>">
+                            <h4 class="fw-bold"><%= blog.title %></h4>
+                            <p><%= blog.description %></p>
+                            <div class="d-flex">
+                                <p class="me-2 fw=light">Published on <%= blog.published_time %></p>
+                                <p><%= blog.reading_time %> read</p>
+                            </div>
+                        </a>
+                    </div>
+                <%}) %>
+            <%} else { %>
+                <p><%= message%></p>
+                <a class="fst-italic text-decoration-underline" href="/new-story">write</a> a story or <a class="fst-italic text-decoration-underline" href="/">read</a> on KeyNote
+            <%}%>
+        </div>
+        <div class="tab-pane container fade" id="drafts">
+            <%if (draftBlogs) {%>
+                <% draftBlogs.forEach(function(blog){%>
+                    <div class="border-bottom mb-5 pb-2 lh-0">
+                        <a  href="/dashboard/@<%=user.email.split('@')[0]%>/<%=blog._id%>/draft">
+                            <h4 class="fw-bold"><%= blog.title %></h4>
+                            <p><%= blog.description %></p>
+                            <div class="d-flex">
+                                <p class="me-2 fw=light">Saved on <%= blog.time_saved %></p>
+                                <p><%= blog.reading_time %> read</p>
+                            </div>
+                        </a>
+                    </div>
+                <%}) %>
+            <%} else {%>
+                <p><%= message%></p>
+                <a class="fst-italic text-decoration-underline" href="/new-story">write</a> a story or <a class="fst-italic text-decoration-underline" href="/">read</a> on KeyNote
+            <%}%>
+        </div>
+    </div>
+
+
+
+</div>
+
+<%-include('partials/footer')%>

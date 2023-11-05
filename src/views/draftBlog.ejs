@@ -1,0 +1,139 @@
+<%-include('partials/header')%>
+
+<div class="mb-5 invisible">ah</div>
+
+<div class="container w-100">
+    
+        <div class="d-flex justify-content-between">
+            <div class="mb-5 invisible">ah</div>
+            <button type="submit" class="btn btn-success rounded px-3 mb-2"><a class="text-white " href="/dashboard/@<%=user.email.split('@')[0]%>/<%=blog._id%>/publish">Publish</a></button>
+        </div>
+        <h1 class="mb-4"><%= blog.title %></h1>
+        <div class="author mb-2 border-bottom pb-3 d-flex">
+            <div class="profile">
+                <img class="me-2" width="70" height="70" src="https://img.icons8.com/ios/50/guest-male.png" alt="guest-male"/>
+
+            </div>
+            <div >
+                <p class="mb-0 fs-3"><%= blog.author %></p>
+                <div class="time d-flex">
+                    <p class="fw-lighter me-4"><%= blog.reading_time%> read</p>
+                    <p class="fs-6 fw-lighter"><%= blog.time_saved %></p>
+                </div>
+            </div>
+        </div>
+        <p class="my-5"><%= blog.body %></p>
+        <% blog.tags.forEach(function(tag){%>
+            <span class="border py-2 px-3 bg-dark-subtle rounded-pill"><%= tag %></span>
+        <%}) %>
+
+        <div class="mb-5 invisible">ah</div>
+
+        <div class="buttons d-flex justify-content-around my-5">
+            <button type="submit" class="btn btn-danger rounded "><a class="text-white" href="/posts/@<%=user.email.split('@')[0]%>/<%=blog._id%>/delete">Delete</a></button>
+
+            <!-- Edit Button -->
+            <!-- Button trigger modal -->
+            <button
+            onclick=""
+            class="btn btn-success rounded"
+            data-bs-toggle="modal"
+            data-bs-target="#abc<%=blog._id%>"
+            >
+            Edit Post
+            </button>
+
+            <!-- Modal -->
+            <div
+            class="modal fade"
+            id="abc<%=blog._id%>"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            Update Post
+                            </h1>
+                            <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                            ></button>
+                        </div>
+                        <form
+                            action="/posts/@<%=user.email.split('@')[0]%>/<%=blog._id%>/update"
+                            method="post"
+                        >
+                            <!-- Title -->
+                            <div class="modal-body">
+                                <label for="task" class="form-label">Title:</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="title"
+                                    placeholder="<%=blog.title%>"
+                                    name="title"
+                                    value="<%=blog.title%>"
+                                />
+                            </div>
+                            <!-- Description -->
+                            <div class="modal-body">
+                                <label for="task" class="form-label">Description:</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="description"
+                                    placeholder="<%=blog.description%>"
+                                    name="description"
+                                    value="<%=blog.description%>"
+                                />
+                            </div>
+                            <!-- Body -->
+                            <div class="modal-body">
+                                <label for="body" class="form-label">Body:</label>                               
+                                <textarea
+                                    type="text"
+                                    class="form-control border-0 w-100 p-3 h-5"
+                                    rows="15"
+                                    id="body"                                    
+                                    name="body"
+                                ><%=blog.body%></textarea>
+                            </div>
+                            <!-- Tags -->
+                            <div class="modal-body">
+                                <label for="task" class="form-label">Tags:</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="tags"
+                                    placeholder="<%=blog.tags%>"
+                                    name="tags"
+                                    value="<%=blog.tags%>"
+                                />
+                            </div>
+
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+<%-include('partials/footer')%>

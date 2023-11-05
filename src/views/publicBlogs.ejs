@@ -1,0 +1,40 @@
+<%-include('partials/header')%>
+
+<div class="mb-5 invisible">ah</div>
+
+<div class="container w-100">
+        <h1 class="mb-4"><%= blog.title %></h1>
+        <div class="author mb-2 border-bottom pb-3">
+            <div class="profile">
+                <img class="me-2" width="70" height="70" src="https://img.icons8.com/ios/50/guest-male.png" alt="guest-male"/>
+                <symbol id="check-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </symbol>
+            </div>
+            <div >
+                <p class="mb-0 fs-3"><%= blog.author %></p>
+                <div class="time d-flex">
+                    <p class="fw-lighter me-4"><%= blog.reading_time%> read</p>
+                    <p class="fs-6 fw-lighter"><%= blog.published_time %></p>
+                </div>
+            </div>
+        </div>
+        <p class="my-5"><%= blog.body %></p>
+        <div class="me-3">
+            <% blog.tags.forEach(function(tag){%>
+                <span class="me-3 fw-lighter bg-dark-subtle rounded-pill py-1 px-3"><%= tag %></span>
+            <%}) %>
+        </div>
+
+        <div class="d-flex my-5">
+            <img class="align-middle ms-3 me-1 mt-1" width="20" height="20"  src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/>
+            <p class="fw-lighter"><%= blog.read_count %></p>
+            <svg class="ms-5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
+                <path d="M 25 4.0625 C 12.414063 4.0625 2.0625 12.925781 2.0625 24 C 2.0625 30.425781 5.625 36.09375 11 39.71875 C 10.992188 39.933594 11 40.265625 10.71875 41.3125 C 10.371094 42.605469 9.683594 44.4375 8.25 46.46875 L 7.21875 47.90625 L 9 47.9375 C 15.175781 47.964844 18.753906 43.90625 19.3125 43.25 C 21.136719 43.65625 23.035156 43.9375 25 43.9375 C 37.582031 43.9375 47.9375 35.074219 47.9375 24 C 47.9375 12.925781 37.582031 4.0625 25 4.0625 Z M 25 5.9375 C 36.714844 5.9375 46.0625 14.089844 46.0625 24 C 46.0625 33.910156 36.714844 42.0625 25 42.0625 C 22.996094 42.0625 21.050781 41.820313 19.21875 41.375 L 18.65625 41.25 L 18.28125 41.71875 C 18.28125 41.71875 15.390625 44.976563 10.78125 45.75 C 11.613281 44.257813 12.246094 42.871094 12.53125 41.8125 C 12.929688 40.332031 12.9375 39.3125 12.9375 39.3125 L 12.9375 38.8125 L 12.5 38.53125 C 7.273438 35.21875 3.9375 29.941406 3.9375 24 C 3.9375 14.089844 13.28125 5.9375 25 5.9375 Z"></path>
+                </svg>
+        </div>
+
+    
+</div>
+
+<%-include('partials/footer')%>
